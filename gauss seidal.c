@@ -1,5 +1,28 @@
 #include <stdio.h>
 double ar[100][100], x[100], a[100], b[100];
+
+int seidalmatrix(int n) {
+  int i, j, l, k;
+  for (i = 0; i < n - 1; i++) {
+    l = i;
+    double max = 0;
+    for (j = i; j < n; j++) {
+      if (ar[j][i] > max) {
+        max = ar[j][i];
+        l = j;
+      }
+    }
+    if (l != i) {
+      for (k = 0; k < n + 1; k++) {
+        double t = ar[l][k];
+        ar[l][k] = ar[i][k];
+        ar[i][k] = t;
+      }
+    }
+  }
+  return 0;
+}
+
 int check(int n) {
   int k = 0, i;
   for (i = 0; i < n; i++)
@@ -21,6 +44,7 @@ int main() {
       scanf("%lf", &ar[i][j]);
     }
   }
+  seidalmatrix(n);
   double sum = 0;
   for (i = 0; i < n; i++) {
     a[i] = 0;
@@ -46,4 +70,3 @@ int main() {
   for (i = 0; i < n; i++)
     printf("%lf ", b[i]);
 }
-
