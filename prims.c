@@ -28,7 +28,6 @@ int prims(int n, int e) {
     }
 }
 near[k]=near[l]=0;
-cost[k][l]=cost[l][k]=99999;
 for(j=1;j<=n;j++)
 {
     if(near[j]>0)
