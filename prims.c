@@ -44,13 +44,6 @@ t[u][1] = k;
 t[u][2] = l;
 mincost=mincost+c;
 }
-printf("t table\n");
-for(i=1;i<n;i++)
-{
-    for(j=1;j<=2;j++)
-    printf("%d ",t[i][j]);
-    printf("\n");
-}
   return mincost;
 }
 
