@@ -2,7 +2,7 @@
 #include<math.h>
 int arr[1000];
 int n;
-double epsilon=0.001;
+double epsilon=0.00001;
 
 double func(double a)
 {
