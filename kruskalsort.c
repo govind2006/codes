@@ -86,9 +86,9 @@ int kruskal() {
     j = find(u);
     k = find(v);
     if (j != k) {
-      i = i + 1;
       t[i][1] = u;
       t[i][2] = v;
+      i = i + 1;
       mc = mc + l;
       union1(j, k);
     }
