@@ -7,7 +7,7 @@ a[j]=l;
 }
 double knapsack(double p[],double w[],int m,int n)
 {
-double x[n],s;
+double x[n],s=0;
 int u,i;
 for(i=0;i<n;i++)
 x[i]=0;
