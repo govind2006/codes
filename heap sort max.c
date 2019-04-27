@@ -1,4 +1,3 @@
-// http://faculty.simpson.edu/lydia.sinapova/www/cmsc250/LN250_Weiss/L13-HeapSortEx.htm
 #include<stdio.h>
 int n=0,tree[1000];
 void insheap()
