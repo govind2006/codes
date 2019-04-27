@@ -1,3 +1,4 @@
+// http://faculty.simpson.edu/lydia.sinapova/www/cmsc250/LN250_Weiss/L13-HeapSortEx.htm
 #include<stdio.h>
 int n=0,tree[1000];
 void insheap()
@@ -55,7 +56,9 @@ int item,last,l,r,ptr;
     r=l+1;
     }
     if(l==n && last<tree[l])
+    {tree[ptr]=tree[l];
     ptr=l;
+    }
     tree[ptr]=last;
 }
 void print()
@@ -84,4 +87,3 @@ int main()
     scanf("%d",&k);
     }
  }
-
