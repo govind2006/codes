@@ -49,7 +49,8 @@ for(i=1;i<n;i++)
 {
 int q=i;
 for(j=0;j<i;j++)
-if(g[q]<g[j])
+{
+if(g[q]>g[j])
 q=j;
 if(q!=i)
 {
@@ -58,7 +59,7 @@ swap(q,i,w);
 swap(q,i,g);
 }
 }
+}
 k=knapsack(p,w,m,n);
 printf("solution=%lf",k);
 }
-
