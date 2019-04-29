@@ -1,86 +1,79 @@
-#include<stdio.h>
-#include<math.h>
-int arr[1000];
-int n;
-double epsilon=0.00001;
-
-double func(double a)
-{
-    double sum=0;
-    for(int i=0;i<=n;i++)
-    {
-       sum+=arr[i] * pow(a , n-i);
-    }
-    return sum;
+#include <math.h>
+#include <stdio.h>
+int n, ar[1000];
+double loop(double x) {
+  int i;
+  double s = 0;
+  for (i = 0; i <= n; i++)
+    s += pow(x, n - i) * ar[i];
+  return s;
 }
 
-double reg(double a, double b)
-{
-    double c=0,p=1,m=0;
-    while(p>=epsilon)
-    {
-        if(c!=0)
-        p=fabs((c-m)/c)*100;
-        m=c;
-        double tm =  (a*func(b) - b*func(a));
-        c= tm/ (func(b) - func(a));
-        if(func(c)==0.0)
-        {return c;
+double regfalsi(double a, double b) {
+  double c = 0, h = 0, p = 1;
+  while (p > 0.0001) {
+    if (c != 0)
+      p = fabs(((c - h) / c) * 100);
+    h = c;
+    if (loop(c) == 0.0)
+      break;
+    c = (((a * loop(b)) - b * loop(a)) / (loop(b) - loop(a)));
+    if (loop(c) * loop(a) < 0)
+      b = c;
+    else
+      a = c;
+  }
+  return c;
+}
+
+int main() {
+  int i, j, g, mn = 0;
+  double a, b;
+  printf("enter the heighest power of eq=");
+  scanf("%d", &n);
+  printf("enter the coefficient of eq=");
+  for (g = 0; g <= n; g++)
+    scanf("%d", &ar[g]);
+
+  if (loop(0) < 0) {
+    i = -1;
+    j = 1;
+    while (loop(i) < 0 && loop(j) < 0) {
+      i--;
+      j++;
+      if (loop(i) == 0 || loop(j) == 0) {
+        mn++;
         break;
-        }
-        if(func(a) * func(c) < 0)
-            b = c;
-        else
-            a = c;
+      }
     }
-
-     return c;
-}
-
-int main()
-{
-
-  printf("enter the highest power\n");
-  scanf("%d",&n);
-  printf("enter the coeficient of equation\n");
-  for(int g=0;g<=n;g++)
-      scanf("%d",&arr[g]);
-  double a=0,b=0,i=0,j=0;
-  if(func(0)<0)
-  {
-    while(func(i)<=0 && func(j)<=0)
-    {
-        i++;
-        j--;
+    if (loop(i) > 0) {
+      a = i;
+      b = i + 1;
     }
-    if(func(i)>0)
-    {
-    a=i-1;
-    b=i;
-    }
-    else
-    {
-        a=j;
-        b=j+1;
+    if (loop(j) > 0) {
+      a = j;
+      b = j - 1;
     }
   }
+
+  else {
+    i = -1;
+    j = 1;
+    while (loop(i) > 0 && loop(j) > 0) {
+      i--;
+      j++;
+    }
+    if (loop(i) < 0) {
+      a = i;
+      b = i + 1;
+    }
+    if (loop(j) < 0) {
+      a = j;
+      b = j - 1;
+    }
+  }
+  if (mn != 0)
+    printf("root=%d", j);
   else
-  {
-    while(func(i)>=0 && func(j)>=0)
-    {
-        i++;j--;
-    }
-    if(func(i)<0)
-{a=i-1;
-b=i;
+    printf("root=%lf", regfalsi(a, b));
 }
-    else
-    {
-        a=j;b=j+1;
-    }
-  }
-    printf("root=%lf\n",reg(a,b));
-    return 0;
-}
-
-
