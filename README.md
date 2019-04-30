@@ -1,7 +1,1 @@
-FIRST-DJANGO-PROJECT
-
-
-This is my first very own made django project
-this is next update
-sxgqsgdqwetg
-qsxdwedcver
+it has programs of data structure and alogrithms.
