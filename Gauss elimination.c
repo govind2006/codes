@@ -50,3 +50,4 @@ scanf("%lf",&ar[i][j]);
 matrixsolve(n);
 }
 
+
